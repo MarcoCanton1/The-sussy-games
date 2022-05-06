@@ -12,10 +12,15 @@ public class Mongus : MonoBehaviour
     Color tempColor;
     public AudioSource conversacion;
     public AudioClip dialogo;
-    public Text texto;
+    public GameObject texto;
+    public Text si;
+    bool comienzo;
+    int etapa;
     void Start()
     {
+        comienzo = false;
         transparencia = 0;
+        texto.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -25,7 +30,22 @@ public class Mongus : MonoBehaviour
         {
             StartCoroutine(aparicion());
         }
-        else if (emperador.color.a == 1)
+        else if (emperador.color.a == 1 && comienzo == false)
+        {
+            texto.gameObject.SetActive(true);
+            comienzo = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            etapa++;
+        }
+
+        if (etapa == 1)
+        {
+            si.text = "هذا المكان لا يمثل أي قيمة";
+        }
+        else if (etapa == 2)
         {
 
         }
