@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Pantalla.unity
+    guid: 2b2a0ad7496beaa43b9adf5aef466351
+  - enabled: 1
+    path: Assets/Scenes/Juicio.unity
+    guid: 2da4b1649090f384da307cb290ade00f
+  - enabled: 1
+    path: Assets/Scenes/Nacimiento.unity
+    guid: 91c7ebf7658e62a48809175936d1e035
+  - enabled: 1
+    path: Assets/Scenes/Bowl do amogus.unity
+    guid: ed93b3745ac59ae4b9c5363be21f297b
   m_configObjects: {}

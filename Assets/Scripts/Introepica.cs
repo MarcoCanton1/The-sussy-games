@@ -17,6 +17,7 @@ public class Introepica : MonoBehaviour
     public AudioSource musica;
     public GameObject contenedor;
     public Slider volumenM;
+    public static float vol;
     public Dropdown cancion;
     public Dropdown graficos;
     public AudioClip song1;
@@ -43,6 +44,7 @@ public class Introepica : MonoBehaviour
     {
         PonerCalidad(graficos.value);
         musica.volume = volumenM.value;
+        vol = volumenM.value;
         if (bienvenido.fontSize < 50)
         {
             StartCoroutine(aumentar());
