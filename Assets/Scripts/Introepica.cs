@@ -20,6 +20,10 @@ public class Introepica : MonoBehaviour
     public static float vol;
     public Dropdown cancion;
     public Dropdown graficos;
+    public Image instrucciones;
+    public Button inicioP;
+    public Toggle cookies;
+    public Image bien;
     public AudioClip song1;
     public AudioClip song2;
     string[] juegos = {"Bowl do amogus", "Nacimiento"};
@@ -33,6 +37,7 @@ public class Introepica : MonoBehaviour
         secreto1.gameObject.SetActive(false);
         seleccion = UnityEngine.Random.Range(0, 4);
         BC.gameObject.SetActive(false);
+        instrucciones.gameObject.SetActive(false);
         iniciar.gameObject.SetActive(false);
         config.gameObject.SetActive(false);
         bienvenido.fontSize = 0;
@@ -72,6 +77,17 @@ public class Introepica : MonoBehaviour
         {
             secreto1.gameObject.SetActive(true);
         }
+
+        if (cookies.isOn == false)
+        {
+            inicioP.interactable = false;
+            bien.gameObject.SetActive(false);
+        }
+        else if (cookies.isOn == true)
+        {
+            inicioP.interactable = true;
+            bien.gameObject.SetActive(true);
+        }
     }
 
     IEnumerator aumentar()
@@ -103,11 +119,18 @@ public class Introepica : MonoBehaviour
 
     public void Empezar()
     {
-        SceneManager.LoadScene(juegos[seleccion]);
+        instrucciones.gameObject.SetActive(true);
+        inicioP.interactable = false;
+        bien.gameObject.SetActive(false);
     }
 
     public void Chances()
     {
         SceneManager.LoadScene("Juicio");
+    }
+
+    public void ahoraSi()
+    {
+        SceneManager.LoadScene(juegos[seleccion]);
     }
 }
