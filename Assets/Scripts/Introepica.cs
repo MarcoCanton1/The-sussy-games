@@ -14,6 +14,8 @@ public class Introepica : MonoBehaviour
     public Button config;
     public Button secreto1;
     public Image BC;
+    public Button secreto2;
+    public float TiempoS2;
     public AudioSource musica;
     public GameObject contenedor;
     public Slider volumenM;
@@ -26,7 +28,7 @@ public class Introepica : MonoBehaviour
     public Image bien;
     public AudioClip song1;
     public AudioClip song2;
-    string[] juegos = {"Bowl do amogus", "Nacimiento"};
+    public string[] juegos = {"Bowl do amogus", "Nacimiento"};
     Random siguienteJ = new Random();
     int seleccion;
     //
@@ -35,6 +37,7 @@ public class Introepica : MonoBehaviour
     void Start()
     {
         secreto1.gameObject.SetActive(false);
+        secreto2.gameObject.SetActive(false);
         seleccion = UnityEngine.Random.Range(0, 4);
         BC.gameObject.SetActive(false);
         instrucciones.gameObject.SetActive(false);
@@ -88,6 +91,15 @@ public class Introepica : MonoBehaviour
             inicioP.interactable = true;
             bien.gameObject.SetActive(true);
         }
+
+        if (TiempoS2 > 0)
+        {
+            TiempoS2 -= Time.deltaTime;
+        }
+        else if (TiempoS2 <= 0)
+        {
+            secreto2.gameObject.SetActive(true);
+        }
     }
 
     IEnumerator aumentar()
@@ -131,6 +143,11 @@ public class Introepica : MonoBehaviour
 
     public void ahoraSi()
     {
-        SceneManager.LoadScene(juegos[seleccion]);
+        SceneManager.LoadScene(juegos[0]);
+    }
+
+    public void secret2()
+    {
+        SceneManager.LoadScene("troleo");
     }
 }
