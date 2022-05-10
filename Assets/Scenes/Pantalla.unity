@@ -2451,7 +2451,7 @@ MonoBehaviour:
   BC: {fileID: 478776757}
   secreto2: {fileID: 942773858}
   risa: {fileID: 1331774432}
-  TiempoS2: 80
+  TiempoS2: 200
   musica: {fileID: 829714889}
   contenedor: {fileID: 829714885}
   volumenM: {fileID: 1772880046}

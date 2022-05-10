@@ -13,7 +13,7 @@ public class Encuentralo : MonoBehaviour
     public Image fondo1;
     public Image fondo2;
     public Image fondo3;
-    bool etapa1 = false;
+    bool etapa1 = true;
     bool etapa2 = true;
     bool etapa3 = true;
     public Button spawn1;
@@ -21,18 +21,25 @@ public class Encuentralo : MonoBehaviour
     public Button spawn3;
     public float TiempoR;
     public Text tiempoR;
+    bool empezo = false;
+    public Button siguiente;
+    public Image fondoG;
+    public Text textitoUWU;
     void Start()
     {
+        textitoUWU.gameObject.SetActive(false);
+        fondoG.gameObject.SetActive(false);
+        siguiente.gameObject.SetActive(false);
         fondo1.gameObject.SetActive(false);
         spawn1.gameObject.SetActive(false);
         fondo2.gameObject.SetActive(false);
         spawn2.gameObject.SetActive(false);
         fondo3.gameObject.SetActive(false);
         spawn3.gameObject.SetActive(false);
-
+        pantalla.gameObject.SetActive(true);
+        tiempoR.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (TiempoCountdown > 0)
@@ -40,57 +47,51 @@ public class Encuentralo : MonoBehaviour
             TiempoCountdown -= Time.deltaTime;
             numerado.text = TiempoCountdown.ToString();
         }
-        else if (TiempoCountdown <= 0)
+        else if (TiempoCountdown <= 0 && empezo == false)
         {
             pantalla.gameObject.SetActive(false);
+            etapa1 = false;
         }
 
-        if (TiempoCountdown <= 0 && etapa1 == false)
+        if (TiempoR > 0)
         {
+            TiempoR -= Time.deltaTime;
+            tiempoR.text = TiempoR.ToString();
+        }
+        else if (TiempoR <= 0)
+        {
+            perder();
+        }
+
+        if (TiempoR >= 0 && etapa1 == false)
+        {
+            TiempoR = 30;
+            empezo = true;
+            tiempoR.gameObject.SetActive(true);
             fondo1.gameObject.SetActive(true);
             spawn1.gameObject.SetActive(true);
-            if (TiempoR > 0)
-            {
-                TiempoR -= Time.deltaTime;
-                tiempoR.text = TiempoR.ToString();
-            }
-            else if (TiempoR <= 0)
-            {
-                perder();
-            }
             etapa1 = true;
-
         }
-        else if (TiempoCountdown <= 0 && etapa2 == false)
+        if (TiempoR >= 0 && etapa2 == false)
         {
+            etapa1 = true;
+            fondo1.gameObject.SetActive(false);
+            spawn1.gameObject.SetActive(false);
             TiempoR = 30;
             fondo2.gameObject.SetActive(true);
             spawn2.gameObject.SetActive(true);
-            if (TiempoR > 0)
-            {
-                TiempoR -= Time.deltaTime;
-                tiempoR.text = TiempoR.ToString();
-            }
-            else if (TiempoR <= 0)
-            {
-                perder();
-            }
             etapa2 = true;
         }
-        else if (TiempoCountdown <= 0 && etapa3 == false)
+        if (TiempoR >= 0 && etapa3 == false)
         {
+            etapa1 = true;
+            fondo1.gameObject.SetActive(false);
+            spawn1.gameObject.SetActive(false);
+            fondo2.gameObject.SetActive(false);
+            spawn2.gameObject.SetActive(false);
             TiempoR = 30;
             fondo3.gameObject.SetActive(true);
             spawn3.gameObject.SetActive(true);
-            if (TiempoR > 0)
-            {
-                TiempoR -= Time.deltaTime;
-                tiempoR.text = TiempoR.ToString();
-            }
-            else if (TiempoR <= 0)
-            {
-                perder();
-            }
             etapa3 = true;
         }
     }
@@ -115,6 +116,21 @@ public class Encuentralo : MonoBehaviour
 
     public void ganar()
     {
+        fondo1.gameObject.SetActive(false);
+        spawn1.gameObject.SetActive(false);
+        fondo2.gameObject.SetActive(false);
+        spawn2.gameObject.SetActive(false);
+        fondo3.gameObject.SetActive(false);
+        spawn3.gameObject.SetActive(false);
+        pantalla.gameObject.SetActive(false);
+        tiempoR.gameObject.SetActive(false);
+        textitoUWU.gameObject.SetActive(true);
+        fondoG.gameObject.SetActive(true);
+        siguiente.gameObject.SetActive(true);
+    }
 
+    public void ahoraSi()
+    {
+        SceneManager.LoadScene("Quien");
     }
 }
