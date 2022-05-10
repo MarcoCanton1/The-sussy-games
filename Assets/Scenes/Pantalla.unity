@@ -2451,7 +2451,7 @@ MonoBehaviour:
   BC: {fileID: 478776757}
   secreto2: {fileID: 942773858}
   risa: {fileID: 1331774432}
-  TiempoS2: 100
+  TiempoS2: 80
   musica: {fileID: 829714889}
   contenedor: {fileID: 829714885}
   volumenM: {fileID: 1772880046}
@@ -2464,6 +2464,7 @@ MonoBehaviour:
   bien: {fileID: 1422536860}
   song1: {fileID: 8300000, guid: 68384060ada711d44a277f02d8c06a4e, type: 3}
   song2: {fileID: 8300000, guid: 4e27c62d364a4b54a96d7fed3a807813, type: 3}
+  miedo: {fileID: 8300000, guid: 53143ab52d3500b418baf4a52c92c192, type: 3}
   juegos:
   - Bowl do amogus
   - Nacimiento
@@ -3726,7 +3727,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1331774430}
   m_OnClick:
     m_PersistentCalls:

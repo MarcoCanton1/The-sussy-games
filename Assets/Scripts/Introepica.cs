@@ -36,6 +36,7 @@ public class Introepica : MonoBehaviour
     bool etapa4 = false;
     public AudioClip song1;
     public AudioClip song2;
+    public AudioClip miedo;
     public string[] juegos = {"Bowl do amogus", "Nacimiento"};
     Random siguienteJ = new Random();
     int seleccion;
@@ -44,7 +45,6 @@ public class Introepica : MonoBehaviour
     //metodos
     void Start()
     {
-        
         risaIMG = risa.GetComponent<Image>();
         secreto1.gameObject.SetActive(false);
         secreto2.gameObject.SetActive(false);
@@ -74,13 +74,13 @@ public class Introepica : MonoBehaviour
             iniciar.gameObject.SetActive(true);
         }
 
-        if (cancion.value == 0 && musica.clip != song1)
+        if (cancion.value == 0 && musica.clip != song1 && TiempoS2 > 75)
         {
             musica.Stop();
             musica.clip = song1;
             musica.Play();
         }
-        else if (cancion.value == 1 && musica.clip != song2)
+        else if (cancion.value == 1 && musica.clip != song2 && TiempoS2 > 75)
         {
             musica.Stop();
             musica.clip = song2;
@@ -103,11 +103,11 @@ public class Introepica : MonoBehaviour
             bien.gameObject.SetActive(true);
         }
 
-        if (TiempoS2 > -100)
+        if (TiempoS2 > 0)
         {
             TiempoS2 -= Time.deltaTime;
         }
-        else if (TiempoS2 <= 0 && TiempoS2 > -25)
+        if (TiempoS2 <= 100 && TiempoS2 > 75)
         {
             secreto2.gameObject.SetActive(true);
             BC.gameObject.SetActive(false);
@@ -117,24 +117,30 @@ public class Introepica : MonoBehaviour
             bienvenido.gameObject.SetActive(false);
             secreto1.gameObject.SetActive(false);
             risa.interactable = false;
+            transparencia = 0;
         }
-        else if (TiempoS2 == -25 && etapa1 == false)
+        else if (TiempoS2 <= 75 && TiempoS2 > 50 && etapa1 == false)
         {
+            musica.Stop();
+            musica.clip = miedo;
+            musica.Play();
+            risa.gameObject.SetActive(true);
+            risa.interactable = false;
             secreto2.interactable = false;
             transparencia += .25f;
             etapa1 = true;
         }
-        else if (TiempoS2 < -25 && TiempoS2 > -50 && etapa2 == false)
+        else if (TiempoS2 <= 50 && TiempoS2 > 25 && etapa2 == false)
         {
             transparencia += .25f;
             etapa2 = true;
         }
-        else if (TiempoS2 < -50 && TiempoS2 > -100 && etapa3 == false)
+        else if (TiempoS2 <= 25 && TiempoS2 > 0 && etapa3 == false)
         {
             transparencia += .25f;
             etapa3 = true;
         }
-        else if (TiempoS2 >= -100 && etapa4 == false)
+        else if (TiempoS2 <= 0 && etapa4 == false)
         {
             transparencia += .25f;
             etapa4 = true;
