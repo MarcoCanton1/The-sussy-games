@@ -19,6 +19,10 @@ public class Encuentralo : MonoBehaviour
     public Button spawn1;
     public Button spawn2;
     public Button spawn3;
+    public AudioSource audio;
+    public AudioClip musica;
+    public AudioClip respuestaCorrectaSound;
+    public Image bien;
     public float TiempoR;
     public Text tiempoR;
     bool empezo = false;
@@ -27,6 +31,9 @@ public class Encuentralo : MonoBehaviour
     public Text textitoUWU;
     void Start()
     {
+        audio = gameObject.GetComponent<AudioSource>();
+        audio.volume = Introepica.vol;
+        bien.gameObject.SetActive(false);
         textitoUWU.gameObject.SetActive(false);
         fondoG.gameObject.SetActive(false);
         siguiente.gameObject.SetActive(false);
@@ -92,6 +99,7 @@ public class Encuentralo : MonoBehaviour
             TiempoR = 30;
             fondo3.gameObject.SetActive(true);
             spawn3.gameObject.SetActive(true);
+            spawn3.interactable = true;
             etapa3 = true;
         }
     }
@@ -104,17 +112,14 @@ public class Encuentralo : MonoBehaviour
     public void E1()
     {
         etapa2 = false;
+        StartCoroutine(Bien());
     }
     public void E2()
     {
         etapa3 = false;
+        StartCoroutine(Bien());
     }
     public void E3()
-    {
-        ganar();
-    }
-
-    public void ganar()
     {
         fondo1.gameObject.SetActive(false);
         spawn1.gameObject.SetActive(false);
@@ -127,7 +132,18 @@ public class Encuentralo : MonoBehaviour
         textitoUWU.gameObject.SetActive(true);
         fondoG.gameObject.SetActive(true);
         siguiente.gameObject.SetActive(true);
+        StartCoroutine(Bien());
     }
+    
+    IEnumerator Bien()
+    {
+        bien.gameObject.SetActive(true);
+        audio.PlayOneShot(respuestaCorrectaSound, 1);
+        yield return new WaitForSeconds(2);
+        bien.gameObject.SetActive(false);
+    }
+
+
 
     public void ahoraSi()
     {

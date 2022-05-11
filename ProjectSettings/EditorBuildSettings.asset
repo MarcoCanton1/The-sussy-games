@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Encuentra.unity
     guid: c4e394634eb803445a56becc0547acd9
+  - enabled: 1
+    path: Assets/Scenes/Quien.unity
+    guid: 79155b014e77700429112ac90edc2495
   m_configObjects: {}
