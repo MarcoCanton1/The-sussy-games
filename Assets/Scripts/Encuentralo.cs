@@ -106,7 +106,7 @@ public class Encuentralo : MonoBehaviour
 
     public void perder()
     {
-
+        SceneManager.LoadScene("Pantalla");
     }
 
     public void E1()

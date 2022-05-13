@@ -203,6 +203,6 @@ public class Introepica : MonoBehaviour
 
     public void screamerxd()
     {
-
+        SceneManager.LoadScene("Terrorifico");
     }
 }

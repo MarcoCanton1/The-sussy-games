@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/troleo.unity
     guid: 887f1852a7e430644838e856d6469067
   - enabled: 1
-    path: Assets/Scenes/Perder.unity
+    path: Assets/Scenes/Terrorifico.unity
     guid: 06462d64c2a627946ac3f0b14ce683d6
   - enabled: 1
     path: Assets/Scenes/Encuentra.unity

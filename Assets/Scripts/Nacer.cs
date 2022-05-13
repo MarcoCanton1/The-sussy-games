@@ -82,7 +82,7 @@ public class Nacer : MonoBehaviour
 
     public void perdiste()
     {
-        SceneManager.LoadScene("Perder");
+        SceneManager.LoadScene("Pantalla");
     }
     public void ganaste()
     {
