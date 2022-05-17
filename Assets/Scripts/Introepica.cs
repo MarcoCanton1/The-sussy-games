@@ -36,7 +36,9 @@ public class Introepica : MonoBehaviour
     bool etapa4 = false;
     public AudioClip song1;
     public AudioClip song2;
+    public Button Willy;
     public AudioClip miedo;
+    public static bool boton = false;
     public string[] juegos = {"Bowl do amogus", "Nacimiento"};
     Random siguienteJ = new Random();
     int seleccion;
@@ -45,6 +47,7 @@ public class Introepica : MonoBehaviour
     //metodos
     void Start()
     {
+        Willy.gameObject.SetActive(false);
         risaIMG = risa.GetComponent<Image>();
         secreto1.gameObject.SetActive(false);
         secreto2.gameObject.SetActive(false);
@@ -61,6 +64,10 @@ public class Introepica : MonoBehaviour
 
     void Update()
     {
+        if (boton == true)
+        {
+            Willy.gameObject.SetActive(true);
+        }
         PonerCalidad(graficos.value);
         musica.volume = volumenM.value;
         vol = volumenM.value;
